@@ -49,7 +49,7 @@ class Rlogtail {
 
 		process.stdin.on('keypress', (str, key) => {
 			if (key.name === 'q' || (key.ctrl && key.name === 'c')) {
-				term.info('bye')
+				out.info('bye\n');
 				process.exit();
 			} else if (key.name === 't') {
 				this.mode = this.mode === 2 ? 0 : this.mode + 1;
