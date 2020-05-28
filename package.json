@@ -1,0 +1,50 @@
+{
+  "_from": "rlogtail",
+  "_id": "rlogtail@1.0.3",
+  "_inBundle": false,
+  "_integrity": "sha512-f4s/IeKG/EqpVyoAMKOb6lCBHR5gfchjd+AW+tKZf4PcMP4u9pZ4hR+AF5ScjGZCTEbNnX1NLtDmExk+R+k9KQ==",
+  "_location": "/rlogtail",
+  "_phantomChildren": {},
+  "_requested": {
+    "type": "tag",
+    "registry": true,
+    "raw": "rlogtail",
+    "name": "rlogtail",
+    "escapedName": "rlogtail",
+    "rawSpec": "",
+    "saveSpec": null,
+    "fetchSpec": "latest"
+  },
+  "_requiredBy": [
+    "#USER",
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/rlogtail/-/rlogtail-1.0.3.tgz",
+  "_shasum": "ad5858673a68a6bf0c1e8af298bebb0684ae250d",
+  "_spec": "rlogtail",
+  "_where": "/Users/elvis/Work/htdocs/eternity-test",
+  "author": {
+    "name": "Gergely Laborci"
+  },
+  "bin": {
+    "rlogtail": "./index.js"
+  },
+  "bundleDependencies": false,
+  "dependencies": {
+    "cli-color": "^1.4.0",
+    "cli-highlight": "^2.0.0",
+    "express": "^4.16.4",
+    "ip": "^1.1.5",
+    "pad-left": "^2.1.0",
+    "terminal-kit": "^1.35.2"
+  },
+  "deprecated": false,
+  "description": "",
+  "license": "ISC",
+  "main": "index.js",
+  "name": "rlogtail",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.0.8"
+}
