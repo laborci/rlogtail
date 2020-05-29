@@ -38,7 +38,7 @@ class ListenerSocket {
 			stream.on('end', () => delete this.connections[client]);
 			stream.on('data', (message) => {
 				this.handler(JSON.parse(message.toString()))
-				stream.write('thankyou.');
+				//stream.write('thankyou.');
 			});
 		})
 		.listen(socketfile).on('connection', (socket) => {});
