@@ -1,4 +1,3 @@
-const clc = require('cli-color');
 const express = require('express');
 const bodyParser = require('body-parser');
 const app = express();
@@ -35,7 +34,7 @@ let out = {
 	}
 }
 
-class Rlogtail {
+class RlogtailTcp {
 
 	constructor(port = 8881, ip = "127.0.0.1") {
 		this.trace = null;
@@ -198,4 +197,4 @@ function comparestrings(str1, str2) {
 	return sim;
 }
 
-module.exports = Rlogtail;
+module.exports = RlogtailTcp;
