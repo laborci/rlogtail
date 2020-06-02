@@ -94,10 +94,10 @@ class Logger {
 			out.trace.type(typeof trc.type !== 'undefined' ? trc.type : '');
 			out.trace.function(trc.function);
 			term('\n')
-			if (showargs && Array.isArray(trc.args) && trc.args.length) term(highlight(JSON.stringify(
+			if (showargs && Array.isArray(trc.args) && trc.args.length) console.log(highlight(JSON.stringify(
 				trc.args,
 				null,
-				(trc.args.length > 1 || (typeof trc.args[0] === 'object' && Object.keys(trc.args[0]).length)) ? 2 : 0
+				(trc.args.length > 1 ) ? 2 : 0
 			), {language: 'json'}) + "\n");
 		});
 		trace.reverse();

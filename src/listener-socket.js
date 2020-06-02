@@ -10,7 +10,7 @@ class ListenerSocket {
 		this.handler = (message) => {console.log(message)}
 		this.init(socketfile)
 		this.shutdown = false;
-		process.on('SIGINT', ()=>this.cleanup());
+		process.on('SIGINT', () => this.cleanup());
 	}
 
 	init(socketfile) {
@@ -33,26 +33,32 @@ class ListenerSocket {
 	createServer(socketfile) {
 		out.info('Creating server.\n');
 		this.server = net.createServer(stream => {
-			let client = Date.now();
+				let client = Date.now();
+				let msg = '';
 				this.connections[client] = (stream);
-			stream.on('end', () => delete this.connections[client]);
-			stream.on('data', (message) => {
-				this.handler(JSON.parse(message.toString()))
-				//stream.write('thankyou.');
-			});
-		})
-		.listen(socketfile).on('connection', (socket) => {});
-		out.action('Logtail listening at '+socketfile+'\n');
+				stream.on('end', () => delete this.connections[client]);
+				stream.on('data', (message) => {
+					msg += message.toString();
+					if (msg.charCodeAt(msg.length - 1) === 125) {
+						this.handler(JSON.parse(msg));
+						msg = '';
+					}
+					//console.log(msg)
+				});
+			})
+			.listen(socketfile).on('connection', (socket) => {});
+		out.action('Logtail listening at ' + socketfile + '\n');
 	}
 
 	onMessage(handler) { this.handler = handler; }
 
-	cleanup(){
-		if(!this.shutdown){ this.shutdown = true;
-			out.action('\n',"Destroying server.",'\n');
-			if(Object.keys(this.connections).length){
+	cleanup() {
+		if (!this.shutdown) {
+			this.shutdown = true;
+			out.action('\n', "Destroying server.", '\n');
+			if (Object.keys(this.connections).length) {
 				let clients = Object.keys(this.connections);
-				while(clients.length){
+				while (clients.length) {
 					let client = clients.pop();
 					this.connections[client].write('__disconnect');
 					this.connections[client].end();
