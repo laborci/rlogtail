@@ -15,6 +15,8 @@ class Logger {
 	}
 
 	log(log) {
+		if(log.type === 'sql' && !this.dumpSQL) return;
+
 		let timestamp = new Date();
 
 		if (this.requestid !== log.request.id) {
@@ -29,14 +31,13 @@ class Logger {
 			out.header.method('' + log.request.method + ' ');
 			out.header.path(log.request.path + ' ');
 			out.header.host(log.request.host + '\n');
-
 		}
 
 		if (log.type === 'error' || log.type === 'exception') {
 			term.bell();
 			this.log_error(log.message, this.mode);
 		}
-		else if (log.type === 'sql' && this.dumpSQL) this.log_sql(log.message);
+		else if (log.type === 'sql') this.log_sql(log.message);
 		else if (log.type === 'info') this.log_info(log.message);
 	}
 
