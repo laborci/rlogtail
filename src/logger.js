@@ -42,7 +42,7 @@ class Logger {
 
 	log_info(message) {
 		out.message.info('[DBG] ');
-		out.info(message.file + ' @ '+message.line);
+		out.info(message.file + ' @ '+message.line + "\n");
 		term(highlight(JSON.stringify(message.message, null, 2), {language: 'json'}));
 		term("\n");
 	}
