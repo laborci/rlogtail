@@ -28,7 +28,7 @@ class Rlogtail {
 				this.logger.dumpSQL = !this.logger.dumpSQL;
 				term.eraseLine();
 				term.column(0);
-				out.action('  show sql: ' + this.logger.dumpSQL ? 'yes' : 'no');
+				out.action('  show sql: ' + (this.logger.dumpSQL ? 'yes' : 'no'));
 				term.column(0);
 			} else if (key.name === 'return') {
 				term.clear();
