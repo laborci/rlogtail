@@ -35,8 +35,9 @@ class Logger {
 		if (log.type === 'error' || log.type === 'exception') {
 			term.bell();
 			this.log_error(log.message, this.mode);
-		} else if (log.type === 'sql' && this.dumpSQL) this.log_sql(log.message);
-		else this.log_info(log.message);
+		}
+		else if (log.type === 'sql' && this.dumpSQL) this.log_sql(log.message);
+		else if (log.type === 'info') this.log_info(log.message);
 	}
 
 	log_info(message) {
