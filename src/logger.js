@@ -11,6 +11,7 @@ class Logger {
 		this.trace = null;
 		this.requestid = null;
 		this.error = null;
+		this.dumpSQL = false;
 	}
 
 	log(log) {
@@ -34,7 +35,7 @@ class Logger {
 		if (log.type === 'error' || log.type === 'exception') {
 			term.bell();
 			this.log_error(log.message, this.mode);
-		} else if (log.type === 'sql') this.log_sql(log.message);
+		} else if (log.type === 'sql' && this.dumpSQL) this.log_sql(log.message);
 		else this.log_info(log.message);
 	}
 
