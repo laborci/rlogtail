@@ -36,14 +36,19 @@ class ListenerSocket {
 				let client = Date.now();
 				let msg = '';
 				this.connections[client] = (stream);
-				stream.on('end', () => delete this.connections[client]);
+				stream.on('end', () =>{
+					if(msg){
+						try{
+							let data = JSON.parse(msg);
+							this.handler(data);
+							msg = '';
+						}catch(error){}
+					}
+					delete this.connections[client]
+				});
 				stream.on('data', (message) => {
 					msg += message.toString();
-					if (msg.charCodeAt(msg.length - 1) === 125) {
-						this.handler(JSON.parse(msg));
-						msg = '';
-					}
-					//console.log(msg)
+
 				});
 			})
 			.listen(socketfile).on('connection', (socket) => {});
@@ -70,3 +75,4 @@ class ListenerSocket {
 }
 
 module.exports = ListenerSocket;
+
