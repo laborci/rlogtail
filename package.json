@@ -37,7 +37,7 @@
     "express": "^4.16.4",
     "ip": "^1.1.5",
     "pad-left": "^2.1.0",
-    "terminal-kit": "^1.35.2"
+    "terminal-kit": "^2.1.8"
   },
   "deprecated": false,
   "description": "",
